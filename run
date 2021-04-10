@@ -1,6 +1,14 @@
 #!/bin/sh
 
-docker run --init \
+# TODO: Randomize the exposed port
+
+docker run \
+    --rm \
+    --init \
+    --name bitemporal-sql-example \
+    -p 5432:5432 \
     -e POSTGRES_USER=test -e POSTGRES_PASSWORD=test \
+    --mount type=tmpfs,destination=/var/lib/postgresql/data \
     -v "$PWD"/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d \
-    postgres:13.2-alpine
+    postgres:13.2-alpine \
+    -c fsync=off
