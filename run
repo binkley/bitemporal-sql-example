@@ -25,21 +25,21 @@ while ! docker exec "$name" pg_isready -q -d "$user" -U "$user" ; do
     sleep 1
 done
 
-echo Raw data:
+echo "Raw data ('example_p'):"
 docker exec -i "$name" psql -n -U "$user" <<EOSQL
 SELECT key, value, applies_to, effective_at
 FROM example_p
 ORDER BY key, applies_to, effective_at;
 EOSQL
 
-echo Latest effective values:
+echo "Latest effective values ('example_latest'):"
 docker exec -i "$name" psql -n -U "$user" <<EOSQL
 SELECT key, value, applies_to
 FROM example_latest
 ORDER BY key, applies_to;
 EOSQL
 
-echo Effective values as of a 2021-02-02:
+echo "Effective values as of a 2021-02-02 ('example_as_of'):"
 docker exec -i "$name" psql -n -U "$user" <<EOSQL
 SELECT * FROM example_as_of('2021-02-02')
 ORDER BY key, applies_to;

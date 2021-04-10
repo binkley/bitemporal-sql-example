@@ -38,7 +38,7 @@ and `effective_at`:
 - The effective data as of 2021-02-02 (function `example_as_of`)
 
 ```
-Raw data:
+Raw data ('example_p'):
  key | value |     applies_to      |    effective_at     
 -----+-------+---------------------+---------------------
  A   |     3 | 2021-02-01 00:00:00 | 2021-02-01 00:00:00
@@ -47,14 +47,14 @@ Raw data:
  B   |    17 | 2021-02-01 00:00:00 | 2021-02-01 00:00:00
 (4 rows)
 
-Latest effective values:
+Latest effective values ('example_latest'):
  key | value |     applies_to      
 -----+-------+---------------------
  A   |     2 | 2021-02-01 00:00:00
  B   |    17 | 2021-02-01 00:00:00
 (2 rows)
 
-Effective values as of 2021-02-02:
+Effective values as of a 2021-02-02 ('example_as_of'):
  key | value |     applies_to      
 -----+-------+---------------------
  A   |     4 | 2021-02-01 00:00:00
