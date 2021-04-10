@@ -6,6 +6,11 @@
 
 An example of SQL schema and functions for bitemporal domains.
 
+Try it:
+```
+$ ./run
+```
+
 ## Schema
 
 | Column         | Type      | Function       |
