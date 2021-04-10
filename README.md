@@ -4,7 +4,7 @@
 
 # Bitemporal SQL example
 
-An example of SQL schema, views, and functions for bitemporal domains.
+An example of SQL schemata, views, and functions for bitemporal domains.
 
 Try it:
 ```
