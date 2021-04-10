@@ -3,7 +3,9 @@
 # TODO: Randomize the exposed port
 
 name=bitemporal-sql-example
+# shellcheck disable=SC2209
 user=test
+# shellcheck disable=SC2209
 pass=test
 
 docker run \

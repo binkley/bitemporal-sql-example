@@ -2,9 +2,7 @@
 
 set -e
 
-psql -v ON_ERROR_STOP=1 \
-    --username=$POSTGRES_USER \
-    --dbname=$POSTGRES_DB < <(tr '\n' ' ' <<EOSQL
+psql -v ON_ERROR_STOP=1 "$POSTGRES_DB" "$POSTGRES_USER" <<EOSQL
 CREATE TABLE example_p (
     key TEXT NOT NULL,
     value INTEGER NOT NULL,
@@ -13,4 +11,3 @@ CREATE TABLE example_p (
     PRIMARY KEY(key, applies_to, effective_at)
 );
 EOSQL
-)
