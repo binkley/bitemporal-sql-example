@@ -22,7 +22,7 @@ $ ./run
 
 ## Expected output
 
-The `run` script executes two queries:
+The `run` script executes these queries:
 - All the underlying, raw data (table `example_p`)
 - The latest effective data (view `example_latest`)
 - The effective data as of 2021-02-02 (procedure `example_as_of`)
