@@ -1,3 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
-docker run -d postgres:13.2-alpine
+docker run \
+    -e POSTGRES_USER=test -e POSTGRES_PASSWORD=test \
+    -v "$PWD"/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d \
+    postgres:13.2-alpine
