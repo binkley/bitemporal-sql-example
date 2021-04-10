@@ -1,8 +1,3 @@
-#!/bin/bash
-
-set -e
-
-psql -v ON_ERROR_STOP=1 "$POSTGRES_DB" "$POSTGRES_USER" <<'EOSQL'
 CREATE FUNCTION example_as_of (
     as_of TIMESTAMP
 )
@@ -21,5 +16,4 @@ AS $$
     );
 $$
 LANGUAGE SQL
-IMMUTABLE
-EOSQL
+IMMUTABLE;
