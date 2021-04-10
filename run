@@ -4,7 +4,6 @@
 
 docker run \
     --rm \
-    --init \
     --name bitemporal-sql-example \
     -p 5432:5432 \
     -e POSTGRES_USER=test -e POSTGRES_PASSWORD=test \
