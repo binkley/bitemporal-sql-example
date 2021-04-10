@@ -20,6 +20,12 @@ $ ./run
 | `effective_at` | timestamp | primary key    |
 | `value`        | integer   | satellite data |
 
+## Expected output
+
+The `run` script executes two queries:
+- All the underlying, raw data (table `example_p`)
+- The latest effective data (view `example_latest`)
+
 ## Reading
 
 * [_Bitemporal History_](https://martinfowler.com/articles/bitemporal-history.html)

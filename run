@@ -25,12 +25,12 @@ done
 
 echo Raw data:
 docker exec -i "$name" psql -n -U "$user" <<EOSQL
-SELECT * FROM example_p ORDER BY key, applies_to, effective_at;
+SELECT key, value, applies_to, effective_at FROM example_p ORDER BY key, applies_to, effective_at;
 EOSQL
 
 echo Latest effective values:
 docker exec -i "$name" psql -n -U "$user" <<EOSQL
-SELECT * FROM example_latest ORDER BY key, applies_to, effective_at;
+SELECT key, value, applies_to FROM example_latest ORDER BY key, applies_to;
 EOSQL
 
 docker exec "$name" kill -TERM 1
