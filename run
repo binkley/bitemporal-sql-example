@@ -19,4 +19,8 @@ while ! docker exec -it $name pg_isready -q -d test -U test ; do
     sleep 1
 done
 
+docker exec -i bitemporal-sql-example psql -n -U test <<-EOSQL
+SELECT * FROM example_p;
+EOSQL
+
 docker exec -it $name kill -TERM 1
