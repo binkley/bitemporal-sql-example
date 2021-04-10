@@ -3,24 +3,28 @@
 # TODO: Randomize the exposed port
 
 name=bitemporal-sql-example
+user=test
+pass=test
 
 docker run \
+    --name "$name" \
     -d \
     --rm \
-    --name $name \
     -p 5432:5432 \
-    -e POSTGRES_USER=test -e POSTGRES_PASSWORD=test \
-    --mount type=tmpfs,destination=/var/lib/postgresql/data \
+    -e POSTGRES_USER="$user" -e POSTGRES_PASSWORD="$pass" \
     -v "$PWD"/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d \
+    --mount type=tmpfs,destination=/var/lib/postgresql/data \
     postgres:13.2-alpine \
     -c fsync=off >/dev/null
 
-while ! docker exec $name pg_isready -q -d test -U test ; do
+# TODO: This does not actually always work :(
+sleep 1
+while ! docker exec "$name" pg_isready -q -d "$user" -U "$user" ; do
     sleep 1
 done
 
-docker exec -i bitemporal-sql-example psql -n -U test <<-EOSQL
+docker exec -i "$name" psql -n -U "$user" <<EOSQL
 SELECT * FROM example_p;
 EOSQL
 
-docker exec $name kill -TERM 1
+docker exec "$name" kill -TERM 1
