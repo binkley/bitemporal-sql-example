@@ -15,7 +15,7 @@ docker run \
     postgres:13.2-alpine \
     -c fsync=off >/dev/null
 
-while ! docker exec -it $name pg_isready -q -d test -U test ; do
+while ! docker exec $name pg_isready -q -d test -U test ; do
     sleep 1
 done
 
@@ -23,4 +23,4 @@ docker exec -i bitemporal-sql-example psql -n -U test <<-EOSQL
 SELECT * FROM example_p;
 EOSQL
 
-docker exec -it $name kill -TERM 1
+docker exec $name kill -TERM 1
