@@ -25,6 +25,9 @@ The only dependencies of this project are Bash and Docker.
 | `applies_to`   | timestamp | primary key    |
 | `effective_at` | timestamp | primary key    |
 
+**NB** &mdash; Taken together, `key`, `applies_to`, and `effective_at` are 
+the primary key of a row.  There is no `id` column; the three are sufficient.
+
 ## Expected output
 
 The `run` script executes these queries ordering by `key`, `applies_to`,
