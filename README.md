@@ -4,12 +4,17 @@
 
 # Bitemporal SQL example
 
-An example of SQL schemata, views, and functions for bitemporal domains.
+An example of SQL [schemata](./docker-entrypoint-initdb.d/00-schemata.sql),
+[views](./docker-entrypoint-initdb.d/01-views.sql), and
+[functions](./docker-entrypoint-initdb.d/02-funcs.sql) for bitemporal domains.
 
 Try it:
+
 ```
 $ ./run
 ```
+
+The only dependencies of this project are Bash and Docker.
 
 ## Schema
 
@@ -22,7 +27,9 @@ $ ./run
 
 ## Expected output
 
-The `run` script executes these queries:
+The `run` script executes these queries ordering by `key`, `applies_to`,
+and `effective_at`:
+
 - All the underlying, raw data (table `example_p`)
 - The latest effective data (view `example_latest`)
 - The effective data as of 2021-02-02 (function `example_as_of`)
@@ -54,4 +61,5 @@ Effective values as of 2021-02-02:
 
 ## Reading
 
-* [_Bitemporal History_](https://martinfowler.com/articles/bitemporal-history.html)
+* [_Bitemporal
+  History_](https://martinfowler.com/articles/bitemporal-history.html)
