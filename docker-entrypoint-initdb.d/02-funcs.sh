@@ -9,11 +9,10 @@ CREATE FUNCTION example_as_of (
 RETURNS TABLE(
     key example_p.key%TYPE,
     value example_p.value%TYPE,
-    applies_to example_p.applies_to%TYPE,
-    effective_at example_p.effective_at%TYPE
+    applies_to example_p.applies_to%TYPE
 )
 AS $$
-    SELECT (key, value, applies_to, effective_at) from example_p
+    SELECT (key, value, applies_to) from example_p
     WHERE (key, applies_to, effective_at) IN (
         SELECT key, applies_to, max(effective_at)
         FROM example_p
