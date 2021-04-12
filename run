@@ -2,26 +2,74 @@
 
 # TODO: Randomize the exposed port
 
-name=bitemporal-sql-example
+readonly name=bitemporal-sql-example
 # shellcheck disable=SC2209
-user=test
+readonly user=test
 # shellcheck disable=SC2209
-pass=test
+readonly pass=test
 
-docker run \
-    --name "$name" \
-    -d \
-    --rm \
-    -p 5432:5432 \
-    -e POSTGRES_USER="$user" -e POSTGRES_PASSWORD="$pass" \
-    -v "$PWD"/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d \
-    --mount type=tmpfs,destination=/var/lib/postgresql/data \
-    postgres:13.2-alpine \
-    -c fsync=off >/dev/null
+print_usage() {
+    echo "Usage: ${0##*/} [-f]"
+}
+
+print_help() {
+    cat <<EOH
+
+Starts Postgres in the background, runs examples, and shuts Postgres down.
+
+Options:
+   -f   starts Postgres in the foreground; does not run examples; INT to quit
+   -h   print this help and exit
+EOH
+}
+
+foreground=false
+while getopts :fh opt; do
+    case $opt in
+    f) foreground=true ;;
+    h)
+        print_usage
+        print_help
+        exit 0
+        ;;
+    *)
+        print_usage >&2
+        exit 2
+        ;;
+    esac
+done
+shift $((OPTIND - 1))
+case $# in
+0) ;;
+*)
+    print_usage >&2
+    exit 2
+    ;;
+esac
+
+postgres() {
+    docker run \
+        --name "$name" \
+        "$@" \
+        --rm \
+        -p 5432:5432 \
+        -e POSTGRES_USER="$user" -e POSTGRES_PASSWORD="$pass" \
+        -v "$PWD"/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d \
+        --mount type=tmpfs,destination=/var/lib/postgresql/data \
+        postgres:13.2-alpine \
+        -c fsync=off
+}
+
+if $foreground; then
+    postgres
+    exit $?
+fi
+
+postgres -d >/dev/null
 
 # TODO: This does not actually always work :(
 sleep 1
-while ! docker exec "$name" pg_isready -q -d "$user" -U "$user" ; do
+while ! docker exec "$name" pg_isready -q -d "$user" -U "$user"; do
     sleep 1
 done
 
