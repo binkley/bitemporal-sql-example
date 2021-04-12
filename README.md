@@ -11,10 +11,34 @@ An example of SQL [schemata](./docker-entrypoint-initdb.d/00-schemata.sql),
 Try it:
 
 ```
-$ ./run
+$ ./run  # Run the examples
+$ ./run -h
+Usage: run [-f]
+
+Starts Postgres in the background, runs examples, and shuts Postgres down.
+
+Options:
+   -f   starts Postgres in the foreground; does not run examples; INT to quit
+   -h   prints this help and exits
 ```
 
 The only dependencies of this project are Bash and Docker.
+
+## Exploring
+
+To explore the schema and data, start Postgres in _foreground_ mode:
+```
+$ ./run -f
+```
+And in another terminal, connect with `psql`:
+```
+$ docker exec -it bitemporal-sql-example psql -U test
+> -- this is an interactive PSQL session
+```
+When finished, either interrupt Postgres (`^C`) or shut it down with Docker:
+```
+docker exec -i bitemporal-sql-example kill -TERM 
+```
 
 ## Schema
 

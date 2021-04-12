@@ -19,7 +19,7 @@ Starts Postgres in the background, runs examples, and shuts Postgres down.
 
 Options:
    -f   starts Postgres in the foreground; does not run examples; INT to quit
-   -h   print this help and exit
+   -h   prints this help and exits
 EOH
 }
 
