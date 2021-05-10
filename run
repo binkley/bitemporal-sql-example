@@ -87,7 +87,7 @@ FROM example_latest
 ORDER BY key, applies_to;
 EOSQL
 
-echo "Effective values as of a 2021-02-02 ('example_as_of'):"
+echo "Effective values as of 2021-02-02 ('example_as_of'):"
 docker exec -i "$name" psql -n -U "$user" <<EOSQL
 SELECT key, value, applies_to FROM example_as_of('2021-02-02')
 ORDER BY key, applies_to;
