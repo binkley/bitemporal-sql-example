@@ -8,7 +8,6 @@ align="right" width="20%" height="auto"/>
 [![build](https://github.com/binkley/bitemporal-sql-example/workflows/build/badge.svg)](https://github.com/binkley/bitemporal-sql-example/actions)
 [![issues](https://img.shields.io/github/issues/binkley/bitemporal-sql-example.svg)](https://github.com/binkley/bitemporal-sql-example/issues/)
 [![pull requests](https://img.shields.io/github/issues-pr/binkley/bitemporal-sql-example.svg)](https://github.com/binkley/bitemporal-sql-example/pulls)
-[![vulnerabilities](https://snyk.io/test/github/binkley/bitemporal-sql-example/badge.svg)](https://snyk.io/test/github/binkley/bitemporal-sql-example)
 [![license](https://img.shields.io/badge/license-Public%20Domain-blue.svg)](http://unlicense.org/)
 
 An example of SQL [schemata](./docker-entrypoint-initdb.d/00-schemata.sql),
