@@ -1,12 +1,20 @@
-<a href="LICENSE.md">
-<img src="https://unlicense.org/pd-icon.png" alt="Public Domain" align="right"/>
+<a href="./LICENSE.md">
+<img src="./images/public-domain.svg" alt="Public Domain"
+align="right" width="20%" height="auto"/>
 </a>
 
 # Bitemporal SQL example
 
+[![build](https://github.com/binkley/bitemporal-sql-example/workflows/build/badge.svg)](https://github.com/binkley/bitemporal-sql-example/actions)
+[![issues](https://img.shields.io/github/issues/binkley/bitemporal-sql-example.svg)](https://github.com/binkley/bitemporal-sql-example/issues/)
+[![pull requests](https://img.shields.io/github/issues-pr/binkley/bitemporal-sql-example.svg)](https://github.com/binkley/bitemporal-sql-example/pulls)
+[![vulnerabilities](https://snyk.io/test/github/binkley/bitemporal-sql-example/badge.svg)](https://snyk.io/test/github/binkley/bitemporal-sql-example)
+[![license](https://img.shields.io/badge/license-Public%20Domain-blue.svg)](http://unlicense.org/)
+
 An example of SQL [schemata](./docker-entrypoint-initdb.d/00-schemata.sql),
-[views](./docker-entrypoint-initdb.d/01-views.sql), and
-[functions](./docker-entrypoint-initdb.d/02-funcs.sql) for bitemporal domains.
+[views](./docker-entrypoint-initdb.d/01-views.sql)
+[functions](./docker-entrypoint-initdb.d/02-funcs.sql), and
+[data](./docker-entrypoint-initdb.d/03-data.sql) for bitemporal domains.
 
 Try it:
 
